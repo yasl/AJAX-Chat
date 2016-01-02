@@ -8,8 +8,11 @@
  * @link https://blueimp.net/ajax/
  */
 
-// Suppress errors:
-error_reporting(0);
+// Log (most significant) errors:
+error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+
+// But for goodness' sake don't dump them onto the page!
+ini_set('display_errors', '0');
 
 // Path to the chat directory:
 define('AJAX_CHAT_PATH', dirname($_SERVER['SCRIPT_FILENAME']).'/');
