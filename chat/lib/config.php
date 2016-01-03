@@ -82,9 +82,9 @@ $config['sessionCookieDomain'] = null;
 $config['sessionCookieSecure'] = null;
 
 // Default channelName used together with the defaultChannelID if no channel with this ID exists:
-$config['defaultChannelName'] = 'Public';
+$config['defaultChannelName'] = 'Allergy_Alley';
 // ChannelID used when no channel is given:
-$config['defaultChannelID'] = 0;
+$config['defaultChannelID'] = 200;
 // Defines an array of channelIDs (e.g. array(0, 1)) to limit the number of available channels, will be ignored if set to null:
 $config['limitChannelList'] = null;
 

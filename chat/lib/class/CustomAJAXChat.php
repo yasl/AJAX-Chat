@@ -133,89 +133,16 @@ class CustomAJAXChat extends AJAXChat {
 	// Store the channels the current user has access to
 	// Make sure channel names don't contain any whitespace
 	function &getChannels() {
-		if($this->_channels === null) {
-			global $db_prefix,$user_info;
-			
-			$this->_channels = array();
-			
-			$sql = 'SELECT
-						ID_BOARD,
-						name
-					FROM
-						'.$db_prefix.'boards AS b
-					WHERE
-						'.$user_info['query_see_board'].';';
-
-			// Create a new SQL query:
-			$result = $this->db->sqlQuery($sql);
-			
-			// Stop if an error occurs:
-			if($result->error()) {
-			    echo $result->getError();
-			    die();
-			}
-
-			$defaultChannelFound = false;
-						
-			while($row = $result->fetch()) {
-				// Check if we have to limit the available channels:
-				if($this->getConfig('limitChannelList') && !in_array($row['ID_BOARD'], $this->getConfig('limitChannelList'))) {
-					continue;
-				}
-
-				$forumName = $this->trimChannelName($row['name']);
-				
-				$this->_channels[$forumName] = $row['ID_BOARD'];
-
-				if(!$defaultChannelFound && $row['ID_BOARD'] == $this->getConfig('defaultChannelID')) {
-					$defaultChannelFound = true;
-				}
-			}		
-			$result->free();
-
-			$this->_channels = array_merge($this->_channels, self::FSA_ROOMS);
-		}
+		// Bludgeon: use only FSA_ROOMS
+		$this->_channels = self::FSA_ROOMS;
 		return $this->_channels;
 	}
 
 	// Store all existing channels
 	// Make sure channel names don't contain any whitespace
 	function &getAllChannels() {
-		if($this->_allChannels === null) {
-			global $db_prefix,$user_info;
-			
-			$this->_allChannels = array();
-			
-			$sql = 'SELECT
-						ID_BOARD,
-						name
-					FROM
-						'.$db_prefix.'boards;';
-
-			// Create a new SQL query:
-			$result = $this->db->sqlQuery($sql);
-			
-			// Stop if an error occurs:
-			if($result->error()) {
-			    echo $result->getError();
-			    die();
-			}
-
-			$defaultChannelFound = false;
-						
-			while($row = $result->fetch()) {
-				$forumName = $this->trimChannelName($row['name']);
-				
-				$this->_allChannels[$forumName] = $row['ID_BOARD'];
-
-				if(!$defaultChannelFound && $row['ID_BOARD'] == $this->getConfig('defaultChannelID')) {
-					$defaultChannelFound = true;
-				}
-			}		
-			$result->free();
-
-			$this->_channels = array_merge($this->_channels, self::FSA_ROOMS);
-		}
+		// Bludgeon: use only FSA_ROOMS
+		$this->_allChannels = self::FSA_ROOMS;
 		return $this->_allChannels;
 	}
 
