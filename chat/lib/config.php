@@ -86,7 +86,20 @@ $config['defaultChannelName'] = 'Allergy_Alley';
 // ChannelID used when no channel is given:
 $config['defaultChannelID'] = 200;
 // Defines an array of channelIDs (e.g. array(0, 1)) to limit the number of available channels, will be ignored if set to null:
+// Don't set this
 $config['limitChannelList'] = null;
+// [FSA] Authoratative list of channels, available to all logged-in members
+// array(<name> => <id>, ...)
+$config['channelList'] = array(
+	'Allergy_Alley' => 200,
+	'Butterfly_Beach' => 201,
+	'Dusty_Den' => 202,
+	'Feather_Field' => 203,
+	'Flowering_Forest' => 204,
+	'Pepper_Path' => 205,
+	'Sick_Seas' => 206,
+	'Tickle_Tavern' => 207
+);
 
 // UserID plus this value are private channels (this is also the max userID and max channelID):
 $config['privateChannelDiff'] = 500000000;

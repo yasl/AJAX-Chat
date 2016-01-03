@@ -12,18 +12,6 @@
 
 class CustomAJAXChat extends AJAXChat {
 
-	const FSA_ROOMS = array(
-		'Allergy_Alley' => 200,
-		'Butterfly_Beach' => 201,
-		'Dusty_Den' => 202,
-		'Feather_Field' => 203,
-		'Flowering_Forest' => 204,
-		'Pepper_Path' => 205,
-		'Sick_Seas' => 206,
-		'Tickle_Tavern' => 207
-	);
-
-
 	// Initialize custom configuration settings
 	function initCustomConfig() {
 		global $db_name,$db_connection;
@@ -133,16 +121,16 @@ class CustomAJAXChat extends AJAXChat {
 	// Store the channels the current user has access to
 	// Make sure channel names don't contain any whitespace
 	function &getChannels() {
-		// Bludgeon: use only FSA_ROOMS
-		$this->_channels = self::FSA_ROOMS;
+		// Bludgeon: use only $config['channelList']
+		$this->_channels = $this->getConfig('channelList');
 		return $this->_channels;
 	}
 
 	// Store all existing channels
 	// Make sure channel names don't contain any whitespace
 	function &getAllChannels() {
-		// Bludgeon: use only FSA_ROOMS
-		$this->_allChannels = self::FSA_ROOMS;
+		// Bludgeon: use only $config['channelList']
+		$this->_allChannels = $this->getConfig('channelList');
 		return $this->_allChannels;
 	}
 
