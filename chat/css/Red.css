@@ -1,0 +1,118 @@
+/*
+ * @package AJAX_Chat
+ * @author Furry-Sneezes
+ * @author yasl
+ * 
+ * Color palette inspired by the Outline theme:
+ * http://www.simplemachines.org/
+ */
+@import url('global.css');
+@import url('fonts.css');
+@import url('print.css');
+@import url('custom.css');
+
+/* Buttons */
+#content #bbCodeContainer input, #content #logoutButton, #content #submitButton, #loginForm #loginButton {
+	background-color:#A80329;
+	color:#FCFCFC;
+	border: 1px solid #787878;
+}
+#content select, #loginForm select, #loginForm input, #content textarea {
+	background-color:#E3E3E3;
+	color:#A90329;
+	border: 1px solid #787878;
+}
+
+/* Status Icon */
+#content #statusIconContainer {
+	background: url('../img/loading-sprite.png') no-repeat 0px 0px; 
+}
+#content #statusIconContainer.waiting {
+	background-position: 0px -22px;
+}
+#content #statusIconContainer.retrying {
+	background-position: 0px -44px;
+}
+
+/* Other Theme Elements */
+.ajax-chat {
+	background-color:#740403;
+	color:#FCFCFC;
+}
+.ajax-chat h1 {
+	color:#FCFCFC;
+}
+.ajax-chat a {
+	color:#ECBBCD;
+}
+#loginContent #errorContainer {
+	color:green;
+}
+#content input, #content select, #content textarea {
+	background-color:#E9DDDD;
+	color:#A31032;
+}
+#content #chatList, #content #onlineListContainer, #content #helpContainer, #content #settingsContainer {
+	border-color:#920F0E;
+	background-color:#5E5151;
+}
+.ajax-chat .popup {
+	background-color:#ADADAD;
+	border:1px solid gray;
+}
+#content #colorCodesContainer a {
+	border-color:#FCFCFC;
+}
+#content #optionsContainer input {
+	background-color:transparent;
+}
+#content .rowEven, #helpList dl:nth-child(even), #settingsList dl:nth-child(even) {
+	background-color:#786868;
+}
+#content .rowOdd, #helpList dl:nth-child(odd), #settingsList dl:nth-child(odd) {
+	background-color:#5E5151;
+}
+#content #chatList .rowOdd.private {
+	background-color:#908060;
+}
+#content #chatList .rowEven.private {
+	background-color:#A09060;
+}
+#content .guest {
+	color:gray;
+}
+#content .user {
+	color:#D4D4D4;
+}
+#content .bd {
+	color:#F6B620;
+}
+#content .moderator {
+	color:#00AA00;
+}
+#content .admin {
+	color:#38D1B8;
+}
+#content .chatBot {
+	color:#55D622;
+}
+#content #chatList .chatBotErrorMessage {
+	color:red;
+}
+#content #chatList a {
+	color:#55d622;
+}
+#content #chatList .deleteSelected {
+	border-color:red;
+}
+#content #onlineListContainer h3, #content #helpContainer h3, #content #settingsContainer h3 {
+	background-color:#A80329;
+	color:#FCFCFC;
+}
+
+@media (max-width: 700px) {
+	#content #emoticonsContainer {
+		background-color:#FFF;
+		border: 1px solid #ADADAD;
+	}
+}
