@@ -9,13 +9,13 @@
 // Ajax Chat language Object:
 var ajaxChatLang = {
 	
-	login: '%s logs into the Chat.',
-	logout: '%s logs out of the Chat.',
-	logoutTimeout: '%s has been logged out (Timeout).',
-	logoutIP: '%s has been logged out (Invalid IP address).',
-	logoutKicked: '%s has been logged out (Kicked).',
-	channelEnter: '%s enters the channel.',
-	channelLeave: '%s leaves the channel.',
+	login: '%s sneaks up, nearly unnoticed (Login).',
+	logout: '%s speeds off, leaving a trail of dust (Logout).',
+	logoutTimeout: '%s mysteriously turns into a large flower (Timeout).',
+	logoutIP: '%s has been removed for having weird computer problems (Invalid IP address).',
+	logoutKicked: '%s is not loved (Kicked).',
+	channelEnter: '%s arrives from another area.',
+	channelLeave: '%s travels to a new area.',
 	privmsg: '(whispers)',
 	privmsgto: '(whispers to %s)',
 	invite: '%s invites you to join %s.',
