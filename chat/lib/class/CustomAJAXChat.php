@@ -12,6 +12,18 @@
 
 class CustomAJAXChat extends AJAXChat {
 
+	const FSA_ROOMS = array(
+		'Allergy_Alley' => 200,
+		'Butterfly_Beach' => 201,
+		'Dusty_Den' => 202,
+		'Feather_Field' => 203,
+		'Flowering_Forest' => 204,
+		'Pepper_Path' => 205,
+		'Sick_Seas' => 206,
+		'Tickle_Tavern' => 207
+	);
+
+
 	// Initialize custom configuration settings
 	function initCustomConfig() {
 		global $db_name,$db_connection;
@@ -95,29 +107,27 @@ class CustomAJAXChat extends AJAXChat {
 	function getValidLoginUserData() {
 		global $context,$user_info;
 		
-		// Check if we have a valid registered user:
-		if(!$context['user']['is_guest']) {
-			$userData = array();
-			$userData['userID'] = $context['user']['id'];
-			
-			$userData['userName'] = $this->trimUserName($context['user']['name']);
-			
-			if($context['user']['is_admin'])
-				$userData['userRole'] = AJAX_CHAT_ADMIN;
-			// $context['user']['is_mod'] is always false if no board is loaded.
-			// As a workaround we check the permission 'calendar_post'.
-			// This is only set to true for global moderators by default: 
-			elseif(in_array('calendar_post', $user_info['permissions']))
-				$userData['userRole'] = AJAX_CHAT_MODERATOR;
-			else
-				$userData['userRole'] = AJAX_CHAT_USER;
+		// Access provided only to users with chat_access permission
+		if(!allowedTo('chat_access'))
+			return null;
 
-			return $userData;
-			
-		} else {
-			// Guest users:
+		# XXX: Can guests /ever/ hold chat_access perm?
+		if($context['user']['is_guest'])
 			return $this->getGuestUser();
-		}
+
+		$userData = array(
+			'userID' => $context['user']['id'],
+			'userName' => $this->trimUserName($context['user']['name']),
+			'userRole' => AJAX_CHAT_USER
+		);
+
+		// If admin or mod, override the default userRole (USER)
+		if($context['user']['is_admin'])
+			$userData['userRole'] = AJAX_CHAT_ADMIN;
+		elseif(allowedTo('chat_mod'))
+			$userData['userRole'] = AJAX_CHAT_MODERATOR;
+
+		return $userData;
 	}
 
 	// Store the channels the current user has access to
@@ -163,15 +173,7 @@ class CustomAJAXChat extends AJAXChat {
 			}		
 			$result->free();
 
-			if(!$defaultChannelFound) {
-				// Add the default channel as first array element to the channel list:
-				$this->_channels = array_merge(
-					array(
-						$this->trimChannelName($this->getConfig('defaultChannelName'))=>$this->getConfig('defaultChannelID')
-					),
-					$this->_channels
-				);
-			}
+			$this->_channels = array_merge($this->_channels, self::FSA_ROOMS);
 		}
 		return $this->_channels;
 	}
@@ -212,15 +214,7 @@ class CustomAJAXChat extends AJAXChat {
 			}		
 			$result->free();
 
-			if(!$defaultChannelFound) {
-				// Add the default channel as first array element to the channel list:
-				$this->_allChannels = array_merge(
-					array(
-						$this->trimChannelName($this->getConfig('defaultChannelName'))=>$this->getConfig('defaultChannelID')
-					),
-					$this->_allChannels
-				);
-			}
+			$this->_channels = array_merge($this->_channels, self::FSA_ROOMS);
 		}
 		return $this->_allChannels;
 	}
@@ -271,3 +265,4 @@ class CustomAJAXChat extends AJAXChat {
 	}
 
 }
+?>
