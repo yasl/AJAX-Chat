@@ -355,7 +355,7 @@ class AJAXChat {
 			case 'logs':
 				if($this->isLoggedIn() && ($this->getUserRole() == AJAX_CHAT_ADMIN ||
 					($this->getConfig('logsUserAccess') &&
-					($this->getUserRole() == AJAX_CHAT_MODERATOR || $this->getUserRole() == AJAX_CHAT_USER))
+					in_array($this->getUserRole(), array(AJAX_CHAT_MODERATOR, AJAX_CHAT_BD, AJAX_CHAT_USER)))
 					)) {
 					return true;
 				}
@@ -386,7 +386,7 @@ class AJAXChat {
 
 		// Check if userID or userName are already listed online:
 		if($this->isUserOnline($userData['userID']) || $this->isUserNameInUse($userData['userName'])) {
-			if($userData['userRole'] == AJAX_CHAT_USER || $userData['userRole'] == AJAX_CHAT_MODERATOR || $userData['userRole'] == AJAX_CHAT_ADMIN) {
+			if(in_array($userData['userRole'], array(AJAX_CHAT_USER, AJAX_CHAT_MODERATOR, AJAX_CHAT_ADMIN, AJAX_CHAT_BD))) {
 				// Set the registered user inactive and remove the inactive users so the user can be logged in again:
 				$this->setInactive($userData['userID'], $userData['userName']);
 				$this->removeInactive();
@@ -1394,7 +1394,7 @@ class AJAXChat {
 									NOT (userRole='.$this->db->makeSafe(AJAX_CHAT_ADMIN).')
 								AND
 									NOT (userRole='.$this->db->makeSafe(AJAX_CHAT_CHATBOT).')';
-			} else if($this->getUserRole() == AJAX_CHAT_USER && $this->getConfig('allowUserMessageDelete')) {
+			} else if(in_array($this->getUserRole(), array(AJAX_CHAT_USER, AJAX_CHAT_BD)) && $this->getConfig('allowUserMessageDelete')) {
 				$condition = 'AND
 								(
 								userID='.$this->db->makeSafe($this->getUserID()).'
@@ -3074,6 +3074,8 @@ class AJAXChat {
 				case AJAX_CHAT_MODERATOR:
 					return true;
 				case AJAX_CHAT_ADMIN:
+					return true;
+				case AJAX_CHAT_BD:
 					return true;
 				default:
 					return false;

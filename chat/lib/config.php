@@ -10,6 +10,7 @@
 // Define AJAX Chat user roles:
 define('AJAX_CHAT_BANNED',		6);
 define('AJAX_CHAT_CUSTOM',		5);
+define('AJAX_CHAT_BD',			5);
 define('AJAX_CHAT_CHATBOT',		4);
 define('AJAX_CHAT_ADMIN',		3);
 define('AJAX_CHAT_MODERATOR',		2);
@@ -102,6 +103,8 @@ $config['channelList'] = array(
 	'Sick_Seas' => 206,
 	'Tickle_Tavern' => 207
 );
+// Group IDs that should be assigned Benevolent Dragon status
+$config['bdGroupIDs'] = array(9, 12, 13, 15);
 
 // UserID plus this value are private channels (this is also the max userID and max channelID):
 $config['privateChannelDiff'] = 500000000;

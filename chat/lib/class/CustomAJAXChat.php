@@ -114,6 +114,12 @@ class CustomAJAXChat extends AJAXChat {
 			$userData['userRole'] = AJAX_CHAT_ADMIN;
 		elseif(allowedTo('chat_mod'))
 			$userData['userRole'] = AJAX_CHAT_MODERATOR;
+		else {
+			// Benevolent Dragon status may come from any of a number of groups
+			foreach ($this->getConfig('bdGroupIDs') as $bdid)
+				if(in_array($bdid, $user_info['groups']))
+					$userData['userRole'] = AJAX_CHAT_BD;
+		}
 
 		return $userData;
 	}
