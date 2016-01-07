@@ -2770,6 +2770,8 @@ class AJAXChat {
 			$language = new AJAXChatLanguage($this->getConfig('langAvailable'), $this->getConfig('langDefault'));
 			$langCode = $language->getLangCode();
 		}
+		if(!$langCode)
+			return 'en';
 		return $langCode;
 	}
 
