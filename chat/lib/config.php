@@ -112,7 +112,8 @@ $config['privateChannelDiff'] = 500000000;
 $config['privateMessageDiff'] = 1000000000;
 
 // Enable/Disable private Channels:
-$config['allowPrivateChannels'] = false;
+// (admins always Yes, unless set to 'false' instead of an array)
+$config['allowPrivateChannels'] = array(AJAX_CHAT_MODERATOR, AJAX_CHAT_BD);
 // Enable/Disable private Messages:
 $config['allowPrivateMessages'] = true;
 

@@ -3069,21 +3069,13 @@ class AJAXChat {
 	}
 	
 	function isAllowedToCreatePrivateChannel() {
-		if($this->getConfig('allowPrivateChannels')) {
-			switch($this->getUserRole()) {
-				case AJAX_CHAT_USER:
-					return true;
-				case AJAX_CHAT_MODERATOR:
-					return true;
-				case AJAX_CHAT_ADMIN:
-					return true;
-				case AJAX_CHAT_BD:
-					return true;
-				default:
-					return false;
-			}
-		}
-		return false;
+		$allowed = $this->getConfig('allowPrivateChannels');
+		$role = $this->getUserRole();
+		if ($allowed === false)
+			return false;
+		if ($role == AJAX_CHAT_ADMIN)
+			return true;
+		return in_array($this->getUserRole(), $allowed);
 	}
 	
 	function isAllowedToListHiddenUsers() {
