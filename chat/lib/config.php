@@ -153,7 +153,9 @@ $config['guestUserSuffix'] = ')';
 $config['minGuestUserID'] = 400000000;
 
 // Allow/Disallow users to change their userName (Nickname):
-$config['allowNickChange'] = true;
+// (admins always Yes, unless set to 'false' instead of an array)
+// (must set allowGuestUserName to be meaningful for guests)
+$config['allowNickChange'] = array(AJAX_CHAT_MODERATOR, AJAX_CHAT_BD);
 // Changed userNames should be distinguished by either a prefix or a suffix or both (no whitespace):
 $config['changedNickPrefix'] = '(';
 // Changed userNames should be distinguished by either a prefix or a suffix or both (no whitespace):
