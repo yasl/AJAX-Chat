@@ -1163,9 +1163,6 @@ var ajaxChat = {
 					+ '<li><a href="javascript:ajaxChat.insertMessageWrapper(\'/action \');">'
 					+ this.lang['userMenuAction']
 					+ '</a></li>'
-					+ '<li><a href="javascript:ajaxChat.insertMessageWrapper(\'/roll \');">'
-					+ this.lang['userMenuRoll']
-					+ '</a></li>'
 					+ '<li><a href="javascript:ajaxChat.insertMessageWrapper(\'/nick \');">'
 					+ this.lang['userMenuNick']
 					+ '</a></li>';
