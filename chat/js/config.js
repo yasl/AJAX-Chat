@@ -48,6 +48,14 @@ var ajaxChatConfig = {
         statusIcon: 'statusIconContainer'
 	},
 
+	// Defines user groups who can take certain actions
+	// Takes a list of permitted user role IDs, integers in string format
+	// For mapping see ../lib/config.php
+	permissions: {
+		bbCodeColors: ['2', '3', '5'],
+		bbCodeImages: ['2', '3', '5'],
+	},
+
 	// Defines the settings which can be modified by users:
 	settings: {
 		// Defines if BBCode tags are replaced with the associated HTML code tags:

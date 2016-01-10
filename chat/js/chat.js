@@ -128,6 +128,7 @@ var ajaxChat = {
 		this.startChatOnLoad		= config['startChatOnLoad'];
 		this.domIDs					= config['domIDs'];
 		this.settings				= config['settings'];
+		this.permissions				= config['permissions'];
 		this.nonPersistentSettings	= config['nonPersistentSettings'];
 		this.bbCodeTags				= config['bbCodeTags'];
 		this.colorCodes				= config['colorCodes'];
@@ -336,6 +337,13 @@ var ajaxChat = {
 				onunload();
 			};
 		}
+	},
+
+	removeDOM: function(id) {
+		var domNode = this.dom[id] ? this.dom[id] : document.getElementById(id);
+		if(!domNode)
+			return;
+		domNode.parentNode.removeChild(domNode);
 	},
 
 	updateDOM: function(id, str, prepend, overwrite) {
@@ -915,6 +923,7 @@ var ajaxChat = {
 				break;
 			case 'userRole':
 				this.userRole = infoData;
+				this.updateRoleUI();
 				break;
 			case 'logout':
 				this.handleLogout(infoData);
@@ -1278,7 +1287,7 @@ var ajaxChat = {
 				+ userName
 				+ '</span>'
 				+ colon
-				+ this.replaceText(messageText)
+				+ this.replaceText(messageText, userRole)
 				+ '</div>';
 	},
 
@@ -2092,13 +2101,13 @@ var ajaxChat = {
 		}
 	},
 
-	replaceText: function(text) {
+	replaceText: function(text, userRole) {
 		try{
 			text = this.replaceLineBreaks(text);
 			if(text.charAt(0) === '/') {
-				text = this.replaceCommands(text);
+				text = this.replaceCommands(text, userRole);
 			} else {
-				text = this.replaceBBCode(text);
+				text = this.replaceBBCode(text, userRole);
 				text = this.replaceHyperLinks(text);
 				text = this.replaceEmoticons(text);
 			}
@@ -2110,7 +2119,7 @@ var ajaxChat = {
 		return text;
 	},
 
-	replaceCommands: function(text) {
+	replaceCommands: function(text, userRole) {
 		try {
 			if(text.charAt(0) !== '/') {
 				return text;
@@ -2126,16 +2135,16 @@ var ajaxChat = {
 				case '/channelLeave':
 					return this.replaceCommandChannelLeave(textParts);
 				case '/privmsg':
-					return this.replaceCommandPrivMsg(textParts);
+					return this.replaceCommandPrivMsg(textParts, userRole);
 				case '/privmsgto':
-					return this.replaceCommandPrivMsgTo(textParts);
+					return this.replaceCommandPrivMsgTo(textParts, userRole);
 				case '/privaction':
-					return this.replaceCommandPrivAction(textParts);
+					return this.replaceCommandPrivAction(textParts, userRole);
 				case '/privactionto':
-					return this.replaceCommandPrivActionTo(textParts);
+					return this.replaceCommandPrivActionTo(textParts, userRole);
 				case '/me':
 				case '/action':
-					return this.replaceCommandAction(textParts);
+					return this.replaceCommandAction(textParts, userRole);
 				case '/invite':
 					return this.replaceCommandInvite(textParts);
 				case '/inviteto':
@@ -2218,9 +2227,9 @@ var ajaxChat = {
 				+ '</span>';
 	},
 
-	replaceCommandPrivMsg: function(textParts) {
+	replaceCommandPrivMsg: function(textParts, userRole) {
 		var privMsgText = textParts.slice(1).join(' ');
-		privMsgText = this.replaceBBCode(privMsgText);
+		privMsgText = this.replaceBBCode(privMsgText, userRole);
 		privMsgText = this.replaceHyperLinks(privMsgText);
 		privMsgText = this.replaceEmoticons(privMsgText);
 		return	'<span class="privmsg">'
@@ -2229,9 +2238,9 @@ var ajaxChat = {
 				+ privMsgText;
 	},
 
-	replaceCommandPrivMsgTo: function(textParts) {
+	replaceCommandPrivMsgTo: function(textParts, userRole) {
 		var privMsgText = textParts.slice(2).join(' ');
-		privMsgText = this.replaceBBCode(privMsgText);
+		privMsgText = this.replaceBBCode(privMsgText, userRole);
 		privMsgText = this.replaceHyperLinks(privMsgText);
 		privMsgText = this.replaceEmoticons(privMsgText);
 		return	'<span class="privmsg">'
@@ -2240,9 +2249,9 @@ var ajaxChat = {
 				+ privMsgText;
 	},
 
-	replaceCommandPrivAction: function(textParts) {
+	replaceCommandPrivAction: function(textParts, userRole) {
 		var privActionText = textParts.slice(1).join(' ');
-		privActionText = this.replaceBBCode(privActionText);
+		privActionText = this.replaceBBCode(privActionText, userRole);
 		privActionText = this.replaceHyperLinks(privActionText);
 		privActionText = this.replaceEmoticons(privActionText);
 		return	'<span class="action">'
@@ -2252,9 +2261,9 @@ var ajaxChat = {
 				+ '</span> ';
 	},
 
-	replaceCommandPrivActionTo: function(textParts) {
+	replaceCommandPrivActionTo: function(textParts, userRole) {
 		var privActionText = textParts.slice(2).join(' ');
-		privActionText = this.replaceBBCode(privActionText);
+		privActionText = this.replaceBBCode(privActionText, userRole);
 		privActionText = this.replaceHyperLinks(privActionText);
 		privActionText = this.replaceEmoticons(privActionText);
 		return	'<span class="action">'
@@ -2264,9 +2273,9 @@ var ajaxChat = {
 				+ '</span> ';
 	},
 
-	replaceCommandAction: function(textParts) {
+	replaceCommandAction: function(textParts, userRole) {
 		var actionText = textParts.slice(1).join(' ');
-		actionText = this.replaceBBCode(actionText);
+		actionText = this.replaceBBCode(actionText, userRole);
 		actionText = this.replaceHyperLinks(actionText);
 		actionText = this.replaceEmoticons(actionText);
 		return	'<span class="action">'
@@ -2581,7 +2590,7 @@ var ajaxChat = {
 		return newText;
 	},
 
-	replaceBBCode: function(text) {
+	replaceBBCode: function(text, userRole) {
 		if(!this.settings['bbCode']) {
 			// If BBCode is disabled, just strip the text from BBCode tags:
 			return text.replace(/\[(?:\/)?(\w+)(?:=([^<>]*?))?\]/, '');
@@ -2589,51 +2598,66 @@ var ajaxChat = {
 		// Remove the BBCode tags:
 		return text.replace(
 			/\[(\w+)(?:=([^<>]*?))?\](.+?)\[\/\1\]/gm,
-			this.replaceBBCodeCallback
+			this.replaceBBCodeCallback(userRole)
 		);
 	},
 
-	replaceBBCodeCallback: function(str, p1, p2, p3) {
-		// Only replace predefined BBCode tags:
-		if(!ajaxChat.inArray(ajaxChat.bbCodeTags, p1)) {
-			return str;
-		}
-		// Avoid invalid XHTML (unclosed tags):
-		if(ajaxChat.containsUnclosedTags(p3)) {
-			return str;
-		}
-		switch(p1) {
-			case 'color':
-				return ajaxChat.replaceBBCodeColor(p3, p2);
-			case 'url':
-				return ajaxChat.replaceBBCodeUrl(p3, p2);
-			case 'img':
-				return ajaxChat.replaceBBCodeImage(p3);
-			case 'quote':
-				return ajaxChat.replaceBBCodeQuote(p3, p2);
-			case 'code':
-				return ajaxChat.replaceBBCodeCode(p3);
-			case 'u':
-				return ajaxChat.replaceBBCodeUnderline(p3);
-			default:
-				return ajaxChat.replaceCustomBBCode(p1, p2, p3);
+	replaceBBCodeCallback: function(userRole) {
+		var permissions = this.permissions;
+
+		// Less efficient than currying, but afaik there's no native support...
+		return function(str, p1, p2, p3) {
+			// Only replace predefined BBCode tags:
+			if(!ajaxChat.inArray(ajaxChat.bbCodeTags, p1)) {
+				return str;
+			}
+			// Avoid invalid XHTML (unclosed tags):
+			if(ajaxChat.containsUnclosedTags(p3)) {
+				return str;
+			}
+
+			// Some BBCode may be disabled or restricted to certain user roles
+			var allowed = null;
+			if(p1 == 'color')
+				allowed = permissions['bbCodeColors'];
+			else if(p1 == 'img')
+				allowed = permissions['bbCodeImages'];
+			if(allowed !== null && !ajaxChat.inArray(allowed, userRole))
+				return p3;
+
+			switch(p1) {
+				case 'color':
+					return ajaxChat.replaceBBCodeColor(p3, p2, userRole);
+				case 'url':
+					return ajaxChat.replaceBBCodeUrl(p3, p2, userRole);
+				case 'img':
+					return ajaxChat.replaceBBCodeImage(p3);
+				case 'quote':
+					return ajaxChat.replaceBBCodeQuote(p3, p2, userRole);
+				case 'code':
+					return ajaxChat.replaceBBCodeCode(p3, userRole);
+				case 'u':
+					return ajaxChat.replaceBBCodeUnderline(p3, userRole);
+				default:
+					return ajaxChat.replaceCustomBBCode(p1, p2, p3, userRole);
+			}
 		}
 	},
 
-	replaceBBCodeColor: function(content, attribute) {
+	replaceBBCodeColor: function(content, attribute, userRole) {
 		if(this.settings['bbCodeColors']) {
 			// Only allow predefined color codes:
 			if(!attribute || !this.inArray(ajaxChat.colorCodes, attribute))
 				return content;
 			return 	'<span style="color:'
 					+ attribute + ';">'
-					+ this.replaceBBCode(content)
+					+ this.replaceBBCode(content, userRole)
 					+ '</span>';
 		}
 		return content;
 	},
 
-	replaceBBCodeUrl: function(content, attribute) {
+	replaceBBCodeUrl: function(content, attribute, userRole) {
 		var url, regExpUrl, link;
 		if(attribute)
 			url = attribute.replace(/\s/gm, this.encodeText(' '));
@@ -2650,7 +2674,7 @@ var ajaxChat = {
 		link = '<a href="'
 				+ url
 				+ '" onclick="window.open(this.href); return false;">'
-				+ this.replaceBBCode(content)
+				+ this.replaceBBCode(content, userRole)
 				+ '</a>';
 		this.inUrlBBCode = false;
 		return link;
@@ -2687,28 +2711,28 @@ var ajaxChat = {
 		return url;
 	},
 
-	replaceBBCodeQuote: function(content, attribute) {
+	replaceBBCodeQuote: function(content, attribute, userRole) {
 		if(attribute)
 			return	'<span class="quote"><cite>'
 					+ this.lang['cite'].replace(/%s/, attribute)
 					+ '</cite><q>'
-					+ this.replaceBBCode(content)
+					+ this.replaceBBCode(content, userRole)
 					+ '</q></span>';
 		return 	'<span class="quote"><q>'
-				+ this.replaceBBCode(content)
+				+ this.replaceBBCode(content, userRole)
 				+ '</q></span>';
 	},
 
-	replaceBBCodeCode: function(content) {
+	replaceBBCodeCode: function(content, userRole) {
 		// Replace vertical tabs and multiple spaces with two non-breaking space characters:
 		return 	'<code>'
-				+ this.replaceBBCode(content.replace(/\t|(?:  )/gm, '&#160;&#160;'))
+				+ this.replaceBBCode(content.replace(/\t|(?:  )/gm, '&#160;&#160;'), userRole)
 				+ '</code>';
 	},
 
-	replaceBBCodeUnderline: function(content) {
+	replaceBBCodeUnderline: function(content, userRole) {
 		return 	'<span style="text-decoration:underline;">'
-				+ this.replaceBBCode(content)
+				+ this.replaceBBCode(content, userRole)
 				+ '</span>';
 	},
 
@@ -2941,6 +2965,17 @@ var ajaxChat = {
 	handleCustomInfoMessage: function(infoType, infoData) {
 	},
 
+	updateRoleUI: function() {
+		// Hide color & image controls if not permitted
+		if(!this.inArray(this.permissions['bbCodeColors'], this.userRole)) {
+			this.removeDOM('bbCodeColor');
+			this.removeDOM('colorCodesContainer');
+		}
+		if(!this.inArray(this.permissions['bbCodeImages'], this.userRole)) {
+			this.removeDOM('bbCodeIMG');
+		}
+	},
+
 	// Override to add custom initialization code
 	// This method is called on page load
 	customInitialize: function() {
@@ -2992,8 +3027,8 @@ var ajaxChat = {
 	// Return replaced text and call replaceBBCode recursively for the content text
 	// tag contains the BBCode tag, attribute the BBCode attribute and content the content text
 	// This method is only called for BBCode tags which are in the bbCodeTags list
-	replaceCustomBBCode: function(tag, attribute, content) {
-		return '<' + tag + '>' + this.replaceBBCode(content) + '</' + tag + '>';
+	replaceCustomBBCode: function(tag, attribute, content, userRole) {
+		return '<' + tag + '>' + this.replaceBBCode(content, userRole) + '</' + tag + '>';
 	},
 
 	// Override to perform custom actions on new messages:
