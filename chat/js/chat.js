@@ -376,6 +376,8 @@ var ajaxChat = {
 	},
 
 	initEmoticons: function() {
+		if(!this.settings['emoticons'])
+			return
 		this.DOMbuffer = "";
 		for(var i=0; i<this.emoticonCodes.length; i++) {
 			// Replace specials characters in emoticon codes:
@@ -2986,6 +2988,8 @@ var ajaxChat = {
 	// Override to add custom initialization code
 	// This method is called on page load
 	customInitialize: function() {
+		if(!this.settings['emoticons'])
+			this.removeDOM('emoticonsContainer');
 	},
 
 	// Override to add custom finalization code

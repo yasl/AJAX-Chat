@@ -81,7 +81,7 @@ var ajaxChatConfig = {
 		// Defines if line breaks are enabled:
 		lineBreaks: true,
 		// Defines if emoticon codes are replaced with their associated images:
-		emoticons: true,
+		emoticons: false,
 
 		// Defines if the focus is automatically set to the input field on chat load or channel switch:
 		autoFocus: true,
