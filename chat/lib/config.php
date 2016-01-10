@@ -60,7 +60,7 @@ $config['langNames'] = array(
 );
 
 // Available styles:
-$config['styleAvailable'] = array('beige','black','grey','Oxygen','Lithium','Sulfur','Cobalt','Mercury','Uranium','Pine','Plum','prosilver','Core','MyBB','vBulletin','XenForo','Red');
+$config['styleAvailable'] = array('beige','black','grey','Core','Red');
 // Default style:
 $config['styleDefault'] = 'Red';
 
