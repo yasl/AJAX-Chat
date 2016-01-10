@@ -1144,7 +1144,7 @@ var ajaxChat = {
 					+ this.lang['userMenuWhereis']
 					+ '</a></li>';
 			}
-			if(this.userRole === '2' || this.userRole === '3') {
+			if(ajaxChat.inArray(this.permissions['canModerate'], this.userRole)) {
 				menu	+= '<li><a href="javascript:ajaxChat.insertMessageWrapper(\'/kick '
 						+ encodedUserName
 						+ ' \');">'
@@ -1171,19 +1171,21 @@ var ajaxChat = {
 					+ '</a></li>'
 					+ '<li><a href="javascript:ajaxChat.insertMessageWrapper(\'/action \');">'
 					+ this.lang['userMenuAction']
-					+ '</a></li>'
-					+ '<li><a href="javascript:ajaxChat.insertMessageWrapper(\'/nick \');">'
-					+ this.lang['userMenuNick']
 					+ '</a></li>';
-			if(this.userRole === '1' || this.userRole === '2' || this.userRole === '3' || this.userRole == '5') {
+			if(ajaxChat.inArray(this.permissions['nickChange'], this.userRole)) {
+				menu	+= '<li><a href="javascript:ajaxChat.insertMessageWrapper(\'/nick \');">'
+						+ this.lang['userMenuNick']
+						+ '</a></li>';
+			}
+			if(ajaxChat.inArray(this.permissions['privateRoom'], this.userRole)) {
 				menu	+= '<li><a href="javascript:ajaxChat.sendMessageWrapper(\'/join\');">'
 						+ this.lang['userMenuEnterPrivateRoom']
 						+ '</a></li>';
-				if(this.userRole === '2' || this.userRole === '3') {
-					menu	+= '<li><a href="javascript:ajaxChat.sendMessageWrapper(\'/bans\');">'
-							+ this.lang['userMenuBans']
-							+ '</a></li>';
-				}
+			}
+			if(ajaxChat.inArray(this.permissions['canModerate'], this.userRole)) {
+				menu	+= '<li><a href="javascript:ajaxChat.sendMessageWrapper(\'/bans\');">'
+						+ this.lang['userMenuBans']
+						+ '</a></li>';
 			}
 		}
 		menu += this.getCustomUserMenuItems(encodedUserName, userID);
@@ -1334,15 +1336,20 @@ var ajaxChat = {
 	},
 
 	isAllowedToDeleteMessage: function(messageID, userID, userRole, channelID) {
-		if((((this.userRole === '1' && this.allowUserMessageDelete && (userID === this.userID ||
-			parseInt(channelID) === parseInt(this.userID)+this.privateMessageDiff ||
-			parseInt(channelID) === parseInt(this.userID)+this.privateChannelDiff)) ||
-			(this.userRole === '5' && this.allowUserMessageDelete && (userID === this.userID ||
-			parseInt(channelID) === parseInt(this.userID)+this.privateMessageDiff ||
-			parseInt(channelID) === parseInt(this.userID)+this.privateChannelDiff)) ||
-			this.userRole === '2') && userRole !== '3' && userRole !== '4') || this.userRole === '3') {
+		if(this.userRole === '3')
 			return true;
-		}
+		if(userRole === '3' || userRole === '4')
+			return false;
+		if(ajaxChat.inArray(this.permissions['canModerate'], this.userRole))
+			return true;
+		if(ajaxChat.inArray(this.permissions['deleteOwnMessage'], this.userRole) &&
+				this.allowUserMessageDelete &&
+				(
+					userID === this.userID ||
+					parseInt(channelID) === parseInt(this.userID)+this.privateMessageDiff ||
+					parseInt(channelID) === parseInt(this.userID)+this.privateChannelDiff
+				))
+			return true;
 		return false;
 	},
 

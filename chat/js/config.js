@@ -52,8 +52,20 @@ var ajaxChatConfig = {
 	// Takes a list of permitted user role IDs, integers in string format
 	// For mapping see ../lib/config.php
 	permissions: {
+		// bbcode is stored as bbcode and only substituted by JS on render,
+		// so need only edit these permissions here
 		bbCodeColors: ['2', '3', '5'],
 		bbCodeImages: ['2', '3', '5'],
+
+		// Must also change 'allowNickChange' in ../lib/config.php
+		nickChange: ['2', '3', '5'],
+
+		// Must also change 'allowPrivateChannels' in ../lib/config.php
+		privateRoom: ['2', '3', '5'],
+
+		// DO NOT EDIT. Hardcoded in the PHP backend; here only for reference
+		canModerate: ['2', '3'],
+		deleteOwnMessage: ['1', '5'],
 	},
 
 	// Defines the settings which can be modified by users:
