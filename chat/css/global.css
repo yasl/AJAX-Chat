@@ -58,8 +58,11 @@ body.ajax-chat {
 	right:50px;
 }
 #content #logoutChannelContainer select{
-	width:105px;
+	min-width:105px;
 	height:22px;
+}
+#content #logoutChannelContainer #channelSelection {
+	min-width:200px;
 }
 #content #statusIconContainer {
 	position:absolute;
