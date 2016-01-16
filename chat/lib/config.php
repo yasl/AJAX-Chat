@@ -60,7 +60,7 @@ $config['langNames'] = array(
 );
 
 // Available styles:
-$config['styleAvailable'] = array('beige','black','grey','Core','Red');
+$config['styleAvailable'] = array('Red');
 // Default style:
 $config['styleDefault'] = 'Red';
 

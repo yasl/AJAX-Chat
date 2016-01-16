@@ -433,11 +433,11 @@
 		</div>
 		<div id="colorCodesContainer" style="display:none;" dir="ltr"></div>
 		<div id="optionsContainer">
-			<input type="image" src="img/pixel.gif" class="button" id="helpButton" alt="[LANG]toggleHelp[/LANG]" title="[LANG]toggleHelp[/LANG]" onclick="ajaxChat.view.toggleContainer('helpContainer', ['onlineListContainer','settingsContainer']);"/>
-			<input type="image" src="img/pixel.gif" class="button" id="settingsButton" alt="[LANG]toggleSettings[/LANG]" title="[LANG]toggleSettings[/LANG]" onclick="ajaxChat.view.toggleContainer('settingsContainer', ['onlineListContainer','helpContainer']);"/>
-			<input type="image" src="img/pixel.gif" class="button" id="onlineListButton" alt="[LANG]toggleOnlineList[/LANG]" title="[LANG]toggleOnlineList[/LANG]" onclick="ajaxChat.view.toggleContainer('onlineListContainer', ['settingsContainer','helpContainer']);"/>
-			<input type="image" src="img/pixel.gif" class="button" id="audioButton" alt="[LANG]toggleAudio[/LANG]" title="[LANG]toggleAudio[/LANG]" onclick="ajaxChat.toggleSetting('audio', 'audioButton');"/>
-			<input type="image" src="img/pixel.gif" class="button" id="autoScrollButton" alt="[LANG]toggleAutoScroll[/LANG]" title="[LANG]toggleAutoScroll[/LANG]" onclick="ajaxChat.toggleSetting('autoScroll', 'autoScrollButton');"/>
+			<input id="helpButton" type="button" value="[LANG]toggleHelp[/LANG]" title="[LANG]toggleHelp[/LANG]" onclick="ajaxChat.view.toggleContainer('helpContainer', ['onlineListContainer','settingsContainer']);"/>
+			<input id="settingsButton" type="button" value="[LANG]toggleSettings[/LANG]" title="[LANG]toggleSettings[/LANG]" onclick="ajaxChat.view.toggleContainer('settingsContainer', ['onlineListContainer','helpContainer']);"/>
+			<input id="onlineListButton" type="button" value="[LANG]toggleOnlineList[/LANG]" title="[LANG]toggleOnlineList[/LANG]" onclick="ajaxChat.view.toggleContainer('onlineListContainer', ['settingsContainer','helpContainer']);"/>
+			<input id="audioButton" type="button" value="[LANG]toggleAudio[/LANG]" title="[LANG]toggleAudio[/LANG]" onclick="ajaxChat.toggleSetting('audio', 'audioButton');"/>
+			<input id="autoScrollButton" type="button" value="[LANG]toggleAutoScroll[/LANG]" title="[LANG]toggleAutoScroll[/LANG]" onclick="ajaxChat.toggleSetting('autoScroll', 'autoScrollButton');"/>
   		</div>
 		
 		<!--

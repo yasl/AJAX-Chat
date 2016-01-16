@@ -12,10 +12,13 @@
 @import url('custom.css');
 
 /* Buttons */
-#content #bbCodeContainer input, #content #logoutButton, #content #submitButton, #loginForm #loginButton {
+#content #bbCodeContainer input, #content #optionsContainer input, #content #logoutButton, #content #submitButton, #loginForm #loginButton {
 	background-color:#A80329;
 	color:#FCFCFC;
 	border: 1px solid #787878;
+}
+#content #optionsContainer input.off {
+	background-color:#740403;
 }
 #content select, #loginForm select, #loginForm input, #content textarea {
 	background-color:#E3E3E3;
@@ -62,9 +65,6 @@
 }
 #content #colorCodesContainer a {
 	border-color:#FCFCFC;
-}
-#content #optionsContainer input {
-	background-color:transparent;
 }
 #content .rowEven, #helpList dl:nth-child(even), #settingsList dl:nth-child(even) {
 	background-color:#786868;

@@ -150,12 +150,12 @@ body.ajax-chat {
 	bottom:20px;
 	padding:3px;
 }
-#content #bbCodeContainer input {
+#content #bbCodeContainer input, #content #optionsContainer input {
 	display:block;
 	float:left; 
 	margin-right:2px;
 }
-#content #bbCodeContainer #bbCodeEmoticon { 
+#content #bbCodeContainer #bbCodeEmoticon {
 	display:none;
 }
 #content #colorCodesContainer, #content #emoticonsContainer {
@@ -186,10 +186,7 @@ body.ajax-chat {
 	bottom:20px;
 	padding:3px 0 3px 3px;
 }
-#content #optionsContainer input {
-    vertical-align:middle;
-}
-#content #bbCodeContainer input, #content #logoutButton, #content #submitButton, #loginContent #loginButton {
+#content #bbCodeContainer input, #content #optionsContainer input, #content #logoutButton, #content #submitButton, #loginContent #loginButton {
 	padding: 4px 10px;
 }
 #content #logoutButton {
@@ -236,33 +233,12 @@ body.ajax-chat {
 }
 
 /* Buttons */
-#content #optionsContainer input, #content #settingsContainer #settingsList input.button, #content #showChannelsButton {
+#content #settingsContainer #settingsList input.button, #content #showChannelsButton {
 	background: url('../img/buttons-sprite.png') no-repeat;
 	vertical-align:middle;
 	width:22px;
 	height:22px;
 	padding:0;
-}
-#content #optionsContainer #helpButton {
-	background-position: -69px -22px;
-}
-#content #optionsContainer #settingsButton {
-	background-position: -92px 0px;
-}
-#content #optionsContainer #onlineListButton {
-	background-position: -69px 0px;
-}
-#content #optionsContainer #audioButton {
-	background-position: 0px 0px;
-}
-#content #optionsContainer #audioButton.off {
-	background-position: 0px -22px;
-}
-#content #optionsContainer #autoScrollButton {
-	background-position: -23px 0px;
-}
-#content #optionsContainer #autoScrollButton.off {
-	background-position: -23px -22px;
 }
 #content #settingsContainer #settingsList input.playback {
 	background-position: -92px -22px;
