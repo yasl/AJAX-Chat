@@ -138,16 +138,16 @@
 	background-color:#FFF;
 }
 #ajaxChatContent .rowEven {
-	background-color:#FFF;
+	background-color:#EEE;
 }
 #ajaxChatContent .rowOdd {
-	background-color:#F6F6F6;
+	background-color:#D7D7D7;
 }
 #ajaxChatContent .guest {
 	color:gray;
 }
 #ajaxChatContent .user {
-	color:#D4D4D4;
+	color:#333;
 }
 #ajaxChatContent .bd {
 	font-weight:bold;
@@ -157,7 +157,7 @@
 	color:#00AA00;
 }
 #ajaxChatContent .admin {
-	color:#38D1B8;
+	color:#05B497;
 }
 #ajaxChatContent .chatBot {
 	color:#55D622;
