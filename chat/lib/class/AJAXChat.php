@@ -895,7 +895,7 @@ class AJAXChat {
 	}
 		
 	function insertParsedMessageUninvite($textParts) {
-		if($this->getChannel() == $this->getPrivateChannelID() || in_array($this->getChannel(), $this->getChannels())) {
+		if($this->getChannel() == $this->getPrivateChannelID()) {
 			if(count($textParts) == 1) {
 				$this->insertChatBotMessage(
 					$this->getPrivateMessageID(),
@@ -928,7 +928,7 @@ class AJAXChat {
 			$this->insertChatBotMessage(
 				$this->getPrivateMessageID(),
 				'/error UninviteNotAllowed'
-			);						
+			);
 		}
 	}
 		
