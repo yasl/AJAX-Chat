@@ -147,16 +147,20 @@
 	color:gray;
 }
 #ajaxChatContent .user {
-	color:#000;
+	color:#D4D4D4;
+}
+#ajaxChatContent .bd {
+	font-weight:bold;
+	color:#F6B620;
 }
 #ajaxChatContent .moderator {
 	color:#00AA00;
 }
 #ajaxChatContent .admin {
-	color:red;
+	color:#38D1B8;
 }
 #ajaxChatContent .chatBot {
-	color:#FF6600;
+	color:#55D622;
 }
 #ajaxChatContent #ajaxChatChatList .chatBotErrorMessage {
 	color:red;
