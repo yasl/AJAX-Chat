@@ -87,7 +87,7 @@ $config['sessionCookieSecure'] = null;
 // Default channelName used together with the defaultChannelID if no channel with this ID exists:
 $config['defaultChannelName'] = null;
 // ChannelID used when no channel is given:
-$config['defaultChannelID'] = 200;
+$config['defaultChannelID'] = 201;
 // Defines an array of channelIDs (e.g. array(0, 1)) to limit the number of available channels, will be ignored if set to null:
 // Don't set this
 $config['limitChannelList'] = null;
