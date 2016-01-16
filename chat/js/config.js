@@ -106,7 +106,7 @@ var ajaxChatConfig = {
 		// Defines if sounds are played:
 		audio: true,
 		// Defines the sound volume (0.0 = mute, 1.0 = max):
-		audioVolume: 1.0,
+		audioVolume: 0.5,
 
 		// Defines the sound that is played when normal messages are reveived:
 		soundReceive: 'sound_1',
