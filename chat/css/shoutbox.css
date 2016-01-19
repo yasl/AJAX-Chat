@@ -174,3 +174,38 @@
 #ajaxChatContent #ajaxChatChatList .deleteSelected {
 	border-color:red;
 }
+
+
+/*
+ * Hideous stuff that should be in the SMF Integration mod
+ */
+#ajaxChatCopyright {
+	position: relative;
+}
+#ajaxChatCopyright .chatlinkbutton,
+#ajaxChatCopyright .chathelpbutton {
+	font-size: 12px;
+	padding: 4px 8px 4px 4px;
+	height: 27px;
+	height: calc(100% + 9px);
+	position: absolute;
+	margin: -4px 5px 0 -5px;
+	border:none;
+	border-radius: 0 13px 13px 5px;
+	color: #fff;
+	background: transparent linear-gradient(rgb(168,3,41), rgb(168,3,41), rgb(151,2,36)) repeat scroll 0% 0%;
+}
+#ajaxChatCopyright .chatlinkbutton:hover,
+#ajaxChatCopyright .chathelpbutton:hover {
+    text-decoration: underline;
+}
+#ajaxChatCopyright .chathelpbutton {
+	right: 0;
+	margin: -4px -5px 0 0;
+	border-radius: 13px 0 5px 13px;
+	padding: 4px 4px 4px 8px;
+}
+#ajaxChatCopyright p {
+	margin: 0 75px;
+	padding: 0;
+}
