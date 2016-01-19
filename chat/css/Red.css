@@ -12,7 +12,7 @@
 @import url('custom.css');
 
 /* Buttons */
-#content #bbCodeContainer input, #content #optionsContainer input, #content #logoutButton, #content #submitButton, #loginForm #loginButton {
+#content #bbCodeContainer input, #content #optionsContainer input, #content #logsButton, #content #logoutButton, #content #submitButton, #loginForm #loginButton {
 	background-color:#A80329;
 	color:#FCFCFC;
 	border: 1px solid #787878;

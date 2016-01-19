@@ -203,6 +203,7 @@
 				<select id="styleSelection" onchange="ajaxChat.setActiveStyleSheet(ajaxChat.getSelectedStyle());">[STYLE_OPTIONS/]</select>
 				<label for="languageSelection">[LANG]language[/LANG]:</label>
 				<select id="languageSelection" onchange="ajaxChat.switchLanguage(this.value);">[LANGUAGE_OPTIONS/]</select>
+				<input id="logsButton" type="button" value="Chat Logs" title="Chat Logs" onclick="window.open('index.php?view=logs');" />
 			</div>
 			<input type="image" src="img/pixel.gif" class="button" id="showChannelsButton" alt="[LANG]toggleHelp[/LANG]"/>
 		</div>
