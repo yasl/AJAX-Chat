@@ -64,6 +64,12 @@ body.ajax-chat {
 #content #logoutChannelContainer #channelSelection {
 	min-width:200px;
 }
+#content #logoutChannelContainer #yearSelection,
+#content #logoutChannelContainer #monthSelection,
+#content #logoutChannelContainer #daySelection,
+#content #logoutChannelContainer #hourSelection {
+	min-width:65px;
+}
 #content #statusIconContainer {
 	position:absolute;
 	right:20px;
