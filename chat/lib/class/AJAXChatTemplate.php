@@ -219,10 +219,11 @@ class AJAXChatTemplate {
 			} else {
 				$selected = ($id == $this->ajaxChat->getConfig('defaultChannelID')) ? ' selected="selected"' : '';
 			}
+			$default = ($id == $this->ajaxChat->getConfig('defaultChannelID')) ? ' (Default)' : '';
 			if($selected) {
 				$channelSelected = true;
 			}
-			$channelOptions .= '<option value="'.$this->ajaxChat->htmlEncode($name).'"'.$selected.'>'.$this->ajaxChat->htmlEncode($name).'</option>';
+			$channelOptions .= '<option value="'.$this->ajaxChat->htmlEncode($name).'"'.$selected.'>'.$this->ajaxChat->htmlEncode($name).$default.'</option>';
 		}
 		if($this->ajaxChat->isLoggedIn() && $this->ajaxChat->isAllowedToCreatePrivateChannel()) {
 			// Add the private channel of the user to the options list:
@@ -282,7 +283,8 @@ class AJAXChatTemplate {
 			if($this->ajaxChat->getUserRole() != AJAX_CHAT_ADMIN && $this->ajaxChat->getConfig('logsUserAccessChannelList') && !in_array($value, $this->ajaxChat->getConfig('logsUserAccessChannelList'))) {
 				continue;
 			}
-			$channelOptions .= '<option value="'.$value.'">'.$this->ajaxChat->htmlEncode($key).'</option>';
+			$default = ($id == $this->ajaxChat->getConfig('defaultChannelID')) ? ' (Default)' : '';
+			$channelOptions .= '<option value="'.$value.'">'.$this->ajaxChat->htmlEncode($key).$default.'</option>';
 		}
 		$channelOptions .= '<option value="-1">'.$this->ajaxChat->htmlEncode($this->ajaxChat->getLang('logsPrivateChannels')).'</option>';
 		$channelOptions .= '<option value="-2">'.$this->ajaxChat->htmlEncode($this->ajaxChat->getLang('logsPrivateMessages')).'</option>';
