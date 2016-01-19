@@ -228,9 +228,9 @@
 			<input type="button" id="submitButton" value="[LANG]logsSearch[/LANG]" onclick="ajaxChat.sendMessage();"/>
 		</div>
 		<div id="optionsContainer">
-			<input type="image" src="img/pixel.gif" class="button" id="settingsButton" alt="[LANG]toggleSettings[/LANG]" title="[LANG]toggleSettings[/LANG]" onclick="toggleContainer('settingsContainer');"/>
-			<input type="image" src="img/pixel.gif" class="button" id="audioButton" alt="[LANG]toggleAudio[/LANG]" title="[LANG]toggleAudio[/LANG]" onclick="ajaxChat.toggleSetting('audio', 'audioButton');"/>
-			<input type="image" src="img/pixel.gif" class="button" id="autoScrollButton" alt="[LANG]toggleAutoScroll[/LANG]" title="[LANG]toggleAutoScroll[/LANG]" onclick="ajaxChat.toggleSetting('autoScroll', 'autoScrollButton')"/>
+			<input id="settingsButton" type="button" value="[LANG]toggleSettings[/LANG]" title="[LANG]toggleSettings[/LANG]" onclick="toggleContainer('settingsContainer');"/>
+			<input id="audioButton" type="button" value="[LANG]toggleAudio[/LANG]" title="[LANG]toggleAudio[/LANG]" onclick="ajaxChat.toggleSetting('audio', 'audioButton');"/>
+			<input id="autoScrollButton" type="button" value="[LANG]toggleAutoScroll[/LANG]" title="[LANG]toggleAutoScroll[/LANG]" onclick="ajaxChat.toggleSetting('autoScroll', 'autoScrollButton')"/>
 		</div>
 		<!--
 			Please retain the full copyright notice below including the link to blueimp.net.
