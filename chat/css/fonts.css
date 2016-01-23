@@ -49,6 +49,7 @@
 #content #chatList span.user {
 	font-weight:bold;
 }
+#content #chatList span.bd,
 #content #chatList span.customUser {
 	font-weight:bold;
 }
