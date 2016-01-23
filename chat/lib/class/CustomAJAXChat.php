@@ -106,7 +106,8 @@ class CustomAJAXChat extends AJAXChat {
 		$userData = array(
 			'userID' => $context['user']['id'],
 			'userName' => $this->trimUserName($context['user']['name']),
-			'userRole' => AJAX_CHAT_USER
+			'userRole' => AJAX_CHAT_USER,
+			'viewlogs' => true,
 		);
 
 		// If admin or mod, override the default userRole (USER)
@@ -120,6 +121,10 @@ class CustomAJAXChat extends AJAXChat {
 				if(in_array($bdid, $user_info['groups']))
 					$userData['userRole'] = AJAX_CHAT_BD;
 		}
+		if($userData['userRole'] == AJAX_CHAT_USER)
+			foreach ($this->getConfig('nologsGroupIDs') as $nlid)
+				if(in_array($nlid, $user_info['groups']))
+					$userData['viewlogs'] = false;
 
 		return $userData;
 	}

@@ -172,6 +172,9 @@ class AJAXChatTemplate {
 					return 'write_forbidden';
 				else
 					return 'write_allowed';
+			case 'CLASS_VIEW_LOGS':
+				$userdata = $this->ajaxChat->getValidLoginUserData();
+				return ($userdata['viewlogs'] === true ? 1 : 0);
 			
 			default:
 				return $this->ajaxChat->replaceCustomTemplateTags($tagData[1], (isset($tagData[2]) ? $tagData[2] : null));

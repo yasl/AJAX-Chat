@@ -105,6 +105,9 @@ $config['channelList'] = array(
 );
 // Group IDs that should be assigned Benevolent Dragon status
 $config['bdGroupIDs'] = array(9, 12, 13, 15);
+// Group IDs that should have the Chat Logs button hidden
+// Has no effect on admins, mods, or BDs
+$config['nologsGroupIDs'] = array(4, 16);
 
 // UserID plus this value are private channels (this is also the max userID and max channelID):
 $config['privateChannelDiff'] = 500000000;

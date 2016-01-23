@@ -156,6 +156,7 @@ var ajaxChat = {
 		this.DOMbuffering			= false;
 		this.DOMbuffer				= "";
 		this.retryTimerDelay 		= (this.inactiveTimeout*6000 - this.timerRate)/4 + this.timerRate;
+		this.viewlogs			= config['viewlogs'];
 	},
 
 	initDirectories: function() {
@@ -2988,6 +2989,10 @@ var ajaxChat = {
 	// Override to add custom initialization code
 	// This method is called on page load
 	customInitialize: function() {
+		if(this.viewlogs > 0){
+			console.log(this.viewlogs);
+			this.showHide('logsButton');
+		}
 		if(!this.settings['emoticons'])
 			this.removeDOM('emoticonsContainer');
 	},

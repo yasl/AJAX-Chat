@@ -185,6 +185,7 @@
 			ajaxChatConfig.socketServerHost = decodeURIComponent('[SOCKET_SERVER_HOST/]');
 			ajaxChatConfig.socketServerPort = parseInt('[SOCKET_SERVER_PORT/]');
 			ajaxChatConfig.socketServerChatID = parseInt('[SOCKET_SERVER_CHAT_ID/]');
+			ajaxChatConfig.viewlogs = parseInt('[CLASS_VIEW_LOGS/]');
 		
 			ajaxChat.init(ajaxChatConfig, ajaxChatLang, true, true, true, initialize);
 		// ]]>
@@ -195,7 +196,7 @@
 	<div id="content">
 		<h1 id="headline">[LANG]title[/LANG]</h1>
 		<div id="logoutChannelContainer">
-			<input id="logsButton" type="button" value="Chat Logs" title="Chat Logs" onclick="window.open('index.php?view=logs');" />
+			<input id="logsButton" type="button" value="Chat Logs" title="Chat Logs" style="display: none;" onclick="window.open('index.php?view=logs');" />
 			<div id="logoutChannelInner">
 				<label for="channelSelection">[LANG]channel[/LANG]:</label>
 				<select id="channelSelection" onchange="ajaxChat.switchChannel(this.options[this.selectedIndex].value);">[CHANNEL_OPTIONS/]</select>
