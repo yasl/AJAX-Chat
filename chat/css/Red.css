@@ -73,10 +73,10 @@
 	background-color:#5E5151;
 }
 #content #chatList .rowOdd.private {
-	background-color:#908060;
+	background-color:#776543;
 }
 #content #chatList .rowEven.private {
-	background-color:#A09060;
+	background-color:#908060;
 }
 #content .guest {
 	color:gray;
