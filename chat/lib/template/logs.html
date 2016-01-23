@@ -99,7 +99,6 @@
 	<div id="content">
 		<h1 id="headline">[LANG]logsTitle[/LANG]</h1>
 		<div id="logoutChannelContainer">
-			<input type="button" id="logoutButton" value="[LANG]logout[/LANG]" onclick="ajaxChat.logout();"/>
 			<div id="logoutChannelInner">
 				<label for="channelSelection">[LANG]channel[/LANG]:</label>
 				<select id="channelSelection" onchange="ajaxChat.getLogs();">[LOGS_CHANNEL_OPTIONS/]</select>
@@ -113,6 +112,7 @@
 				<select id="styleSelection" onchange="ajaxChat.setActiveStyleSheet(ajaxChat.getSelectedStyle());">[STYLE_OPTIONS/]</select>
 				<label for="languageSelection">[LANG]language[/LANG]:</label>
 				<select id="languageSelection" onchange="ajaxChat.switchLanguage(this.value);">[LANGUAGE_OPTIONS/]</select>
+				<input type="button" id="logoutButton" value="[LANG]logout[/LANG]" onclick="ajaxChat.logout();"/>
 			</div>
 		</div>
 		<div id="mainPanelContainer">

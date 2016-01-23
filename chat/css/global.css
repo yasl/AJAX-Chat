@@ -195,12 +195,12 @@ body.ajax-chat {
 #content #bbCodeContainer input, #content #optionsContainer input, #content #logsButton, #content #logoutButton, #content #submitButton, #loginContent #loginButton {
 	padding: 4px 10px;
 }
-#content #logoutButton {
+#content #logsButton {
 	display:block;
 	float:left;
 	margin: 0 15px 5px 0;
 }
-#content #logsButton {
+#content #logoutButton {
 	margin: 0 0 5px 15px;
 }
 #content #chatList div {
@@ -275,7 +275,7 @@ body.ajax-chat {
 }
 
 /* Misc */
-#content #bbCodeContainer input, #content #optionsContainer input.button, #content #settingsContainer #settingsList input.button, #content #logoutButton, #content #submitButton, #loginContent #loginButton {
+#content #bbCodeContainer input, #content #optionsContainer input.button, #content #settingsContainer #settingsList input.button, #content #logsButton,  #content #logoutButton, #content #submitButton, #loginContent #loginButton {
 	cursor:pointer;
 }
 
