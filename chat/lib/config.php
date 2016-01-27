@@ -94,7 +94,7 @@ $config['privateChannelDiff'] = 500000000;
 $config['privateMessageDiff'] = 1000000000;
 
 // Enable/Disable private Channels:
-$config['allowPrivateChannels'] = true;
+$config['allowPrivateChannels'] = false;
 // Enable/Disable private Messages:
 $config['allowPrivateMessages'] = true;
 
@@ -121,11 +121,11 @@ $config['closingHour'] = 24;
 $config['openingWeekDays'] = array(0,1,2,3,4,5,6);
 
 // Enable/Disable guest logins:
-$config['allowGuestLogins'] = true;
+$config['allowGuestLogins'] = false;
 // Enable/Disable write access for guest users - if disabled, guest users may not write messages:
-$config['allowGuestWrite'] = true;
+$config['allowGuestWrite'] = false;
 // Allow/Disallow guest users to choose their own userName:
-$config['allowGuestUserName'] = true;
+$config['allowGuestUserName'] = false;
 // Guest users should be distinguished by either a prefix or a suffix or both (no whitespace):
 $config['guestUserPrefix'] = '(';
 // Guest users should be distinguished by either a prefix or a suffix or both (no whitespace):
@@ -134,14 +134,14 @@ $config['guestUserSuffix'] = ')';
 $config['minGuestUserID'] = 400000000;
 
 // Allow/Disallow users to change their userName (Nickname):
-$config['allowNickChange'] = true;
+$config['allowNickChange'] = false;
 // Changed userNames should be distinguished by either a prefix or a suffix or both (no whitespace):
 $config['changedNickPrefix'] = '(';
 // Changed userNames should be distinguished by either a prefix or a suffix or both (no whitespace):
 $config['changedNickSuffix'] = ')';
 
 // Allow/Disallow registered users to delete their own messages:
-$config['allowUserMessageDelete'] = true;
+$config['allowUserMessageDelete'] = false;
 
 // The userID used for ChatBot messages:
 $config['chatBotID'] = 2147483647;
@@ -149,44 +149,44 @@ $config['chatBotID'] = 2147483647;
 $config['chatBotName'] = 'ChatBot';
 
 // Minutes until a user is declared inactive (last status update) - the minimum is 2 minutes:
-$config['inactiveTimeout'] = 2;
+$config['inactiveTimeout'] = 3;
 // Interval in minutes to check for inactive users:
-$config['inactiveCheckInterval'] = 5;
+$config['inactiveCheckInterval'] = 1;
 
 // Defines if messages are shown which have been sent before the user entered the channel:
 $config['requestMessagesPriorChannelEnter'] = true;
 // Defines an array of channelIDs (e.g. array(0, 1)) for which the previous setting is always true (will be ignored if set to null):
 $config['requestMessagesPriorChannelEnterList'] = null;
 // Max time difference in hours for messages to display on each request:
-$config['requestMessagesTimeDiff'] = 24;
+$config['requestMessagesTimeDiff'] = 48;
 // Max number of messages to display on each request:
-$config['requestMessagesLimit'] = 10;
+$config['requestMessagesLimit'] = 30;
 
 // Max users in chat (does not affect moderators or admins):
 $config['maxUsersLoggedIn'] = 100;
 // Max userName length:
-$config['userNameMaxLength'] = 16;
+$config['userNameMaxLength'] = 30;
 // Max messageText length:
-$config['messageTextMaxLength'] = 1040;
+$config['messageTextMaxLength'] = 2000;
 // Defines the max number of messages a user may send per minute:
 $config['maxMessageRate'] = 20;
 
 // Defines the default time in minutes a user gets banned if kicked from a moderator without ban minutes parameter:
-$config['defaultBanTime'] = 5;
+$config['defaultBanTime'] = 3;
 
 // Argument that is given to the handleLogout JavaScript method:
 $config['logoutData'] = './?logout=true';
 
 // If true, checks if the user IP is the same when logged in:
-$config['ipCheck'] = true;
+$config['ipCheck'] = false;
 
 // Defines the max time difference in hours for logs when no period or search condition is given:
-$config['logsRequestMessagesTimeDiff'] = 1;
+$config['logsRequestMessagesTimeDiff'] = 24;
 // Defines how many logs are returned on each logs request:
-$config['logsRequestMessagesLimit'] = 10;
+$config['logsRequestMessagesLimit'] = 30;
 
 // Defines the earliest year used for the logs selection:
-$config['logsFirstYear'] = 2007;
+$config['logsFirstYear'] = 2016;
 
 // Defines if old messages are purged from the database:
 $config['logsPurgeLogs'] = false;
@@ -194,7 +194,7 @@ $config['logsPurgeLogs'] = false;
 $config['logsPurgeTimeDiff'] = 365;
 
 // Defines if registered users (including moderators) have access to the logs (admins are always granted access):
-$config['logsUserAccess'] = false;
+$config['logsUserAccess'] = true;
 // Defines a list of channels (e.g. array(0, 1)) to limit the logs access for registered users, includes all channels the user has access to if set to null:
 $config['logsUserAccessChannelList'] = null;
 
