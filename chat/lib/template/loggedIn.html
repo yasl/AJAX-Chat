@@ -112,13 +112,26 @@
 				isTinyScreen: function() {
 					return !this.isVisible(document.getElementById(this.tinyScreenDetectElement));
 				},
+
+				toggleButton2: function(buttonID, setting) {
+					var id = buttonID.replace('Container', 'Button');
+					var button = document.getElementById(id);
+					if(!button)
+						return;
+					if(setting === true || (setting === null && ajaxChat.hasClass(button, 'off')))
+						ajaxChat.removeClass(button, 'off');
+					else
+						ajaxChat.addClass(button, 'off');
+				},
 				
 				toggleContainer: function(containerID, hideContainerIDs) {
 					if(hideContainerIDs) {
 						for(var i=0; i<hideContainerIDs.length; i++) {
+							ajaxChat.view.toggleButton2(hideContainerIDs[i], false);
 							ajaxChat.showHide(hideContainerIDs[i], 'none');
 						}
 					}
+					ajaxChat.view.toggleButton2(containerID, true);
 					ajaxChat.showHide(containerID);
 				}
 				
@@ -435,9 +448,9 @@
 		</div>
 		<div id="colorCodesContainer" style="display:none;" dir="ltr"></div>
 		<div id="optionsContainer">
-			<input id="helpButton" type="button" value="[LANG]toggleHelp[/LANG]" title="[LANG]toggleHelp[/LANG]" onclick="ajaxChat.view.toggleContainer('helpContainer', ['onlineListContainer','settingsContainer']);"/>
-			<input id="settingsButton" type="button" value="[LANG]toggleSettings[/LANG]" title="[LANG]toggleSettings[/LANG]" onclick="ajaxChat.view.toggleContainer('settingsContainer', ['onlineListContainer','helpContainer']);"/>
-			<input id="onlineListButton" type="button" value="[LANG]toggleOnlineList[/LANG]" title="[LANG]toggleOnlineList[/LANG]" onclick="ajaxChat.view.toggleContainer('onlineListContainer', ['settingsContainer','helpContainer']);"/>
+			<input id="helpButton" type="button" class="off" value="[LANG]toggleHelp[/LANG]" title="[LANG]toggleHelp[/LANG]" onclick="ajaxChat.view.toggleContainer('helpContainer', ['onlineListContainer','settingsContainer']);"/>
+			<input id="settingsButton" type="button" class="off" value="[LANG]toggleSettings[/LANG]" title="[LANG]toggleSettings[/LANG]" onclick="ajaxChat.view.toggleContainer('settingsContainer', ['onlineListContainer','helpContainer']);"/>
+			<input id="onlineListButton" type="button" value="[LANG]toggleOnlineList[/LANG]" title="[LANG]toggleOnlineList[/LANG]" style="margin-right: 10px;" onclick="ajaxChat.view.toggleContainer('onlineListContainer', ['settingsContainer','helpContainer']);"/>
 			<input id="audioButton" type="button" value="[LANG]toggleAudio[/LANG]" title="[LANG]toggleAudio[/LANG]" onclick="ajaxChat.toggleSetting('audio', 'audioButton');"/>
 			<input id="autoScrollButton" type="button" value="[LANG]toggleAutoScroll[/LANG]" title="[LANG]toggleAutoScroll[/LANG]" onclick="ajaxChat.toggleSetting('autoScroll', 'autoScrollButton');"/>
   		</div>
