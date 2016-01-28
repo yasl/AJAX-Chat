@@ -53,15 +53,15 @@ var ajaxChatConfig = {
 		// Defines if BBCode tags are replaced with the associated HTML code tags:
 		bbCode: true,
 		// Defines if image BBCode is replaced with the associated image HTML code:
-		bbCodeImages: true,
+		bbCodeImages: false,
 		// Defines if color BBCode is replaced with the associated color HTML code:
-		bbCodeColors: true,
+		bbCodeColors: false,
 		// Defines if hyperlinks are made clickable:
 		hyperLinks: true,
 		// Defines if line breaks are enabled:
 		lineBreaks: true,
 		// Defines if emoticon codes are replaced with their associated images:
-		emoticons: true,
+		emoticons: false,
 
 		// Defines if the focus is automatically set to the input field on chat load or channel switch:
 		autoFocus: true,
@@ -76,7 +76,7 @@ var ajaxChatConfig = {
 		maxWordLength: 32,
 
 		// Defines the format of the date and time displayed for each chat message:
-		dateFormat: '(%H:%i:%s)',
+		dateFormat: '(%Y-%m-%d %H:%i:%s)',
 
 		// Defines if font colors persist without the need to assign them to each message:
 		persistFontColor: false,
@@ -84,9 +84,9 @@ var ajaxChatConfig = {
 		fontColor: null,
 
 		// Defines if sounds are played:
-		audio: true,
+		audio: false,
 		// Defines the sound volume (0.0 = mute, 1.0 = max):
-		audioVolume: 1.0,
+		audioVolume: 0.5,
 
 		// Defines the sound that is played when normal messages are reveived:
 		soundReceive: 'sound_1',

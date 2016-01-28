@@ -36,10 +36,10 @@ $config['dbConnection']['link'] = null;
 
 // Database table names:
 $config['dbTableNames'] = array();
-$config['dbTableNames']['online']		= 'ajax_chat_online';
-$config['dbTableNames']['messages']		= 'ajax_chat_messages';
-$config['dbTableNames']['bans']			= 'ajax_chat_bans';
-$config['dbTableNames']['invitations']	= 'ajax_chat_invitations';
+$config['dbTableNames']['online']		= 'smf_ajaxchat_online';
+$config['dbTableNames']['messages']		= 'smf_ajaxchat_messages';
+$config['dbTableNames']['bans']			= 'smf_ajaxchat_bans';
+$config['dbTableNames']['invitations']	= 'smf_ajaxchat_invitations';
 
 // Available languages:
 $config['langAvailable'] = array(
@@ -82,7 +82,7 @@ $config['sessionCookieDomain'] = null;
 $config['sessionCookieSecure'] = null;
 
 // Default channelName used together with the defaultChannelID if no channel with this ID exists:
-$config['defaultChannelName'] = 'Allergy_Alley';
+$config['defaultChannelName'] = 'Public';
 // ChannelID used when no channel is given:
 $config['defaultChannelID'] = 200;
 // Defines an array of channelIDs (e.g. array(0, 1)) to limit the number of available channels, will be ignored if set to null:
@@ -91,14 +91,7 @@ $config['limitChannelList'] = null;
 // [FSA] Authoratative list of channels, available to all logged-in members
 // array(<name> => <id>, ...)
 $config['channelList'] = array(
-	'Allergy_Alley' => 200,
-	'Butterfly_Beach' => 201,
-	'Dusty_Den' => 202,
-	'Feather_Field' => 203,
-	'Flowering_Forest' => 204,
-	'Pepper_Path' => 205,
-	'Sick_Seas' => 206,
-	'Tickle_Tavern' => 207
+	'Public' => 200,
 );
 
 // UserID plus this value are private channels (this is also the max userID and max channelID):
