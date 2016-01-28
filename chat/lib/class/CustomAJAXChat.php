@@ -110,7 +110,7 @@ class CustomAJAXChat extends AJAXChat {
 		);
 
 		// If admin or mod, override the default userRole (USER)
-		if($context['user']['is_admin'])
+		if($context['user']['is_admin'] || allowedTo('chat_admin'))
 			$userData['userRole'] = AJAX_CHAT_ADMIN;
 		elseif(allowedTo('chat_mod'))
 			$userData['userRole'] = AJAX_CHAT_MODERATOR;
