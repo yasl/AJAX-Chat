@@ -423,7 +423,9 @@
 			<span id="messageLengthCounter">0/[MESSAGE_TEXT_MAX_LENGTH/]</span>
 			<input type="button" id="submitButton" value="[LANG]messageSubmit[/LANG]" onclick="ajaxChat.sendMessage();"/>
 		</div>
+<!--
 		<div id="emoticonsContainer" dir="ltr"></div>
+-->
 		<div id="bbCodeContainer">
 			<input id="bbCodeBold" type="button" value="[LANG]bbCodeLabelBold[/LANG]" title="[LANG]bbCodeTitleBold[/LANG]" onclick="ajaxChat.insertBBCode('b');" style="font-weight:bold;"/>
 			<input id="bbCodeItalic" type="button" value="[LANG]bbCodeLabelItalic[/LANG]" title="[LANG]bbCodeTitleItalic[/LANG]" onclick="ajaxChat.insertBBCode('i');" style="font-style:italic;"/>
@@ -431,11 +433,15 @@
 			<input id="bbCodeQuote" type="button" value="[LANG]bbCodeLabelQuote[/LANG]" title="[LANG]bbCodeTitleQuote[/LANG]" onclick="ajaxChat.insertBBCode('quote');"/>
 			<input id="bbCodeCode" type="button" value="[LANG]bbCodeLabelCode[/LANG]" title="[LANG]bbCodeTitleCode[/LANG]" onclick="ajaxChat.insertBBCode('code');"/>
 			<input id="bbCodeURL" type="button" value="[LANG]bbCodeLabelURL[/LANG]" title="[LANG]bbCodeTitleURL[/LANG]" onclick="ajaxChat.insertBBCode('url');"/>
+<!--
 			<input id="bbCodeIMG" type="button" value="[LANG]bbCodeLabelImg[/LANG]" title="[LANG]bbCodeTitleImg[/LANG]" onclick="ajaxChat.insertBBCode('img');"/>
 			<input id="bbCodeColor" type="button" value="[LANG]bbCodeLabelColor[/LANG]" title="[LANG]bbCodeTitleColor[/LANG]"/>
 			<input id="bbCodeEmoticon" type="button" value="[LANG]bbCodeLabelEmoticon[/LANG]" title="[LANG]bbCodeTitleEmoticon[/LANG]"/>
+-->
 		</div>
+<!--
 		<div id="colorCodesContainer" style="display:none;" dir="ltr"></div>
+-->
 		<div id="optionsContainer">
 			<input type="image" src="img/pixel.gif" class="button" id="helpButton" alt="[LANG]toggleHelp[/LANG]" title="[LANG]toggleHelp[/LANG]" onclick="ajaxChat.view.toggleContainer('helpContainer', ['onlineListContainer','settingsContainer']);"/>
 			<input type="image" src="img/pixel.gif" class="button" id="settingsButton" alt="[LANG]toggleSettings[/LANG]" title="[LANG]toggleSettings[/LANG]" onclick="ajaxChat.view.toggleContainer('settingsContainer', ['onlineListContainer','helpContainer']);"/>
