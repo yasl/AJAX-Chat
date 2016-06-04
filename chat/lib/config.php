@@ -155,7 +155,7 @@ $config['chatBotID'] = 2147483647;
 $config['chatBotName'] = 'ChatBot';
 
 // Minutes until a user is declared inactive (last status update) - the minimum is 2 minutes:
-$config['inactiveTimeout'] = 3;
+$config['inactiveTimeout'] = 20;
 // Interval in minutes to check for inactive users:
 $config['inactiveCheckInterval'] = 1;
 

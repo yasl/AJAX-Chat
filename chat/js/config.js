@@ -233,7 +233,7 @@ var ajaxChatConfig = {
 	// Allow/Disallow registered users to delete their own messages:
 	allowUserMessageDelete: true,
 	// Minutes until a user is declared inactive (last status update) - the minimum is 2 minutes:
-	inactiveTimeout: 2,
+	inactiveTimeout: 20,
 	// UserID plus this value are private channels (this is also the max userID and max channelID):
 	privateChannelDiff: 500000000,
 	// UserID plus this value are used for private messages:
